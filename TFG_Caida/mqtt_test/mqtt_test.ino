@@ -13,6 +13,7 @@
 // Valores RAW (sin procesar) del acelerometro y giroscopio en los ejes x,y,z
 #define SDA 4
 #define SCL 15
+#define btn 21
 const int MPU_addr=0x68; // I2C address of the MPU-6050
 
 int16_t ax, ay, az;
@@ -24,6 +25,9 @@ long tiempo_prev;
 float dt;
 int d_max;
 float accel_ang_y,accel_ang_x; 
+
+int lastState = HIGH; 
+int currentState;   
 
 #define WLAN_SSID   "RS_PC"
 #define WLAN_PASS   "chocolate"
@@ -42,6 +46,8 @@ Adafruit_MQTT_Client mqtt(&client, HOST, PORT, USERNAME, PASSWORD);
 Adafruit_MQTT_Publish acelera_x = Adafruit_MQTT_Publish(&mqtt, "acelerometro/ax");
 Adafruit_MQTT_Publish acelera_y = Adafruit_MQTT_Publish(&mqtt, "acelerometro/ay");
 Adafruit_MQTT_Publish acelera_z = Adafruit_MQTT_Publish(&mqtt, "acelerometro/az");
+Adafruit_MQTT_Publish button = Adafruit_MQTT_Publish(&mqtt, "acelerometro/button");
+
 
 void MQTT_connect();
 void init_MPU_sensor();
@@ -53,6 +59,7 @@ void setup() {
   Serial.begin(115200);
   Serial.print("Connecting to ");
   Serial.println(WLAN_SSID);
+  pinMode(btn, INPUT_PULLUP); // config GPIO21 as input pin and enable the internal pull-up resistor
 
   WiFi.begin(WLAN_SSID, WLAN_PASS);
   int i = 0;
@@ -72,6 +79,12 @@ void setup() {
 }
   void loop() 
 {
+  currentState = digitalRead(btn);
+  Serial.println( currentState);
+  if (currentState == HIGH){
+      button.publish(currentState);
+  }
+
   delay(150);/*
   int x = random(-10,10);
   int y = random(-10,10);
