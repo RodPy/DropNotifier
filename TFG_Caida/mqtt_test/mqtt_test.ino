@@ -29,11 +29,14 @@ float accel_ang_y,accel_ang_x;
 int lastState = HIGH; 
 int currentState;   
 
-#define WLAN_SSID   "RS_PC"
-#define WLAN_PASS   "chocolate"
+//#define WLAN_SSID   "RS_PC"
+//#define WLAN_PASS   "chocolate"
+#define WLAN_SSID   "Flia.Arriola"
+#define WLAN_PASS   "enpala649"
 
 //MQTT broker settings https://proyectoinfo.mybluemix.net
-#define HOST        "192.168.100.32"
+//#define HOST        "192.168.100.32"
+#define HOST        "192.168.100.17"
 #define PORT        1883
 #define USERNAME    "linux"
 #define PASSWORD    "linux"
