@@ -2,7 +2,7 @@
     {
         "id": "80da23685dd12621",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "IP",
         "disabled": false,
         "info": "",
         "env": []
@@ -22,25 +22,6 @@
         "disabled": false,
         "info": "",
         "env": []
-    },
-    {
-        "id": "4e928620c7fcbd35",
-        "type": "serial-port",
-        "serialport": "/dev/ttyACM0",
-        "serialbaud": "115200",
-        "databits": "8",
-        "parity": "none",
-        "stopbits": "1",
-        "waitfor": "",
-        "dtr": "none",
-        "rts": "none",
-        "cts": "none",
-        "dsr": "none",
-        "newline": "\\n",
-        "bin": "false",
-        "out": "char",
-        "addchar": "",
-        "responsetimeout": "10000"
     },
     {
         "id": "bf6b3b8a4ad71dba",
@@ -136,12 +117,23 @@
         "sessionExpiry": ""
     },
     {
-        "id": "3f646db812c098ae",
-        "type": "ui_tab",
-        "name": "Aceleraciónes",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": true
+        "id": "4e928620c7fcbd35",
+        "type": "serial-port",
+        "serialport": "/dev/ttyACM0",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
     },
     {
         "id": "f86e046b696481d3",
@@ -243,6 +235,14 @@
         }
     },
     {
+        "id": "3f646db812c098ae",
+        "type": "ui_tab",
+        "name": "Aceleraciónes",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": true
+    },
+    {
         "id": "27ffcb042077f03c",
         "type": "ui_group",
         "name": "Aceleraciónes MPU",
@@ -290,123 +290,40 @@
         "mode": "RWC"
     },
     {
-        "id": "4cacd79d57831b84",
-        "type": "serial in",
-        "z": "80da23685dd12621",
-        "name": "MCU",
-        "serial": "4e928620c7fcbd35",
-        "x": 370,
-        "y": 160,
-        "wires": [
-            [
-                "442304a5f6ae1f17"
-            ]
-        ]
+        "id": "ccaf1ccde349d2b9",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": "TFG"
     },
     {
-        "id": "d7675c821b72a6ca",
-        "type": "function",
-        "z": "80da23685dd12621",
-        "name": "function 1",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
-        "y": 460,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "442304a5f6ae1f17",
-        "type": "debug",
-        "z": "80da23685dd12621",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "80cda52735f4a179",
-        "type": "mqtt out",
-        "z": "80da23685dd12621",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
+        "id": "89d0c0dcf0013528",
+        "type": "mqtt-broker",
+        "name": "raspberry",
+        "broker": "192.168.100.137",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
         "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "bf6b3b8a4ad71dba",
-        "x": 1070,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "e046e71432bd90d4",
-        "type": "mqtt out",
-        "z": "80da23685dd12621",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "0fe82f3d91c444d9",
-        "x": 1230,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "05d04c6eb3f6190d",
-        "type": "mqtt out",
-        "z": "80da23685dd12621",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "bee975905c1c044f",
-        "x": 910,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "90b5d702e1ab2987",
-        "type": "debug",
-        "z": "80da23685dd12621",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 720,
-        "y": 260,
-        "wires": []
+        "sessionExpiry": ""
     },
     {
         "id": "31cd857e06d78b4a",
@@ -469,68 +386,11 @@
         ]
     },
     {
-        "id": "50890cbe86a217d4",
-        "type": "mqtt out",
-        "z": "80da23685dd12621",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "bee975905c1c044f",
-        "x": 910,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "8ae25133a1a231cc",
-        "type": "mqtt out",
-        "z": "80da23685dd12621",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "bee975905c1c044f",
-        "x": 930,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "0d1360de7698e067",
-        "type": "mqtt in",
-        "z": "80da23685dd12621",
-        "name": "",
-        "topic": "acelerometro/ax",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "bee975905c1c044f",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 500,
-        "y": 260,
-        "wires": [
-            [
-                "90b5d702e1ab2987"
-            ]
-        ]
-    },
-    {
         "id": "56aceb8b991fbe40",
         "type": "debug",
         "z": "ccaadac99d5b4601",
         "name": "debug 3",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -550,7 +410,7 @@
         "topic": "acelerometro/ax",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "bee975905c1c044f",
+        "broker": "89d0c0dcf0013528",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -567,10 +427,10 @@
         ]
     },
     {
-        "id": "0f687a9fb91e9326",
+        "id": "0766c911b7a50d8f",
         "type": "debug",
         "z": "ccaadac99d5b4601",
-        "name": "debug 4",
+        "name": "debug 6",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -579,36 +439,39 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 580,
-        "y": 640,
+        "x": 860,
+        "y": 340,
         "wires": []
     },
     {
-        "id": "afa5cd7e14c316b6",
+        "id": "c213a365fdc0ff92",
         "type": "mqtt in",
         "z": "ccaadac99d5b4601",
         "name": "",
         "topic": "acelerometro/ay",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "bee975905c1c044f",
+        "broker": "bf6b3b8a4ad71dba",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 180,
-        "y": 560,
+        "x": 631,
+        "y": 283,
         "wires": [
             [
-                "0f687a9fb91e9326"
+                "0766c911b7a50d8f",
+                "77211ade0c4c5a26",
+                "54017bc919bcea8f",
+                "f2c5e8218f9b65ef"
             ]
         ]
     },
     {
-        "id": "ce4958fcb1708f75",
+        "id": "b3e0919682c56b7c",
         "type": "debug",
         "z": "ccaadac99d5b4601",
-        "name": "debug 5",
+        "name": "debug 7",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -617,30 +480,96 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 580,
-        "y": 720,
+        "x": 1300,
+        "y": 320,
         "wires": []
     },
     {
-        "id": "45e2d43ee86de083",
+        "id": "ec12d15b59610ff6",
         "type": "mqtt in",
         "z": "ccaadac99d5b4601",
         "name": "",
         "topic": "acelerometro/az",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "bee975905c1c044f",
+        "broker": "bf6b3b8a4ad71dba",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 180,
-        "y": 720,
+        "x": 1071,
+        "y": 263,
         "wires": [
             [
-                "ce4958fcb1708f75"
+                "b3e0919682c56b7c",
+                "365701f2dbe21f9e",
+                "d845d8fc0e536ed0",
+                "62cf2f7cb736dc0c"
             ]
         ]
+    },
+    {
+        "id": "66af0c6b7701f961",
+        "type": "ui_text",
+        "z": "ccaadac99d5b4601",
+        "group": "27ffcb042077f03c",
+        "order": 10,
+        "width": 7,
+        "height": 1,
+        "name": "",
+        "label": "Aceleración X",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 440,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "54017bc919bcea8f",
+        "type": "ui_text",
+        "z": "ccaadac99d5b4601",
+        "group": "27ffcb042077f03c",
+        "order": 11,
+        "width": 7,
+        "height": 1,
+        "name": "",
+        "label": "Aceleración y",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 880,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d845d8fc0e536ed0",
+        "type": "ui_text",
+        "z": "ccaadac99d5b4601",
+        "group": "27ffcb042077f03c",
+        "order": 12,
+        "width": 7,
+        "height": 1,
+        "name": "",
+        "label": "Aceleración Z",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1320,
+        "y": 280,
+        "wires": []
     },
     {
         "id": "4c5f6640bbad9ba4",
@@ -668,6 +597,62 @@
         "className": "",
         "x": 440,
         "y": 220,
+        "wires": []
+    },
+    {
+        "id": "77211ade0c4c5a26",
+        "type": "ui_gauge",
+        "z": "ccaadac99d5b4601",
+        "name": "",
+        "group": "27ffcb042077f03c",
+        "order": 7,
+        "width": 7,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Aceleración Y",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 880,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "365701f2dbe21f9e",
+        "type": "ui_gauge",
+        "z": "ccaadac99d5b4601",
+        "name": "",
+        "group": "27ffcb042077f03c",
+        "order": 8,
+        "width": 7,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Aceleración Z",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1320,
+        "y": 180,
         "wires": []
     },
     {
@@ -715,96 +700,6 @@
         ]
     },
     {
-        "id": "66af0c6b7701f961",
-        "type": "ui_text",
-        "z": "ccaadac99d5b4601",
-        "group": "27ffcb042077f03c",
-        "order": 10,
-        "width": 7,
-        "height": 1,
-        "name": "",
-        "label": "Aceleración X",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 440,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "0766c911b7a50d8f",
-        "type": "debug",
-        "z": "ccaadac99d5b4601",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 860,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "c213a365fdc0ff92",
-        "type": "mqtt in",
-        "z": "ccaadac99d5b4601",
-        "name": "",
-        "topic": "acelerometro/ay",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "bee975905c1c044f",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 631,
-        "y": 283,
-        "wires": [
-            [
-                "0766c911b7a50d8f",
-                "77211ade0c4c5a26",
-                "54017bc919bcea8f",
-                "f2c5e8218f9b65ef"
-            ]
-        ]
-    },
-    {
-        "id": "77211ade0c4c5a26",
-        "type": "ui_gauge",
-        "z": "ccaadac99d5b4601",
-        "name": "",
-        "group": "27ffcb042077f03c",
-        "order": 7,
-        "width": 7,
-        "height": 4,
-        "gtype": "gage",
-        "title": "Aceleración Y",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": 10,
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "diff": false,
-        "className": "",
-        "x": 880,
-        "y": 200,
-        "wires": []
-    },
-    {
         "id": "f2c5e8218f9b65ef",
         "type": "ui_chart",
         "z": "ccaadac99d5b4601",
@@ -847,96 +742,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "54017bc919bcea8f",
-        "type": "ui_text",
-        "z": "ccaadac99d5b4601",
-        "group": "27ffcb042077f03c",
-        "order": 11,
-        "width": 7,
-        "height": 1,
-        "name": "",
-        "label": "Aceleración y",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 880,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "b3e0919682c56b7c",
-        "type": "debug",
-        "z": "ccaadac99d5b4601",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1300,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "ec12d15b59610ff6",
-        "type": "mqtt in",
-        "z": "ccaadac99d5b4601",
-        "name": "",
-        "topic": "acelerometro/az",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "bee975905c1c044f",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 1071,
-        "y": 263,
-        "wires": [
-            [
-                "b3e0919682c56b7c",
-                "365701f2dbe21f9e",
-                "d845d8fc0e536ed0",
-                "62cf2f7cb736dc0c"
-            ]
-        ]
-    },
-    {
-        "id": "365701f2dbe21f9e",
-        "type": "ui_gauge",
-        "z": "ccaadac99d5b4601",
-        "name": "",
-        "group": "27ffcb042077f03c",
-        "order": 8,
-        "width": 7,
-        "height": 4,
-        "gtype": "gage",
-        "title": "Aceleración Z",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": 10,
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "diff": false,
-        "className": "",
-        "x": 1320,
-        "y": 180,
-        "wires": []
     },
     {
         "id": "62cf2f7cb736dc0c",
@@ -983,15 +788,58 @@
         ]
     },
     {
-        "id": "d845d8fc0e536ed0",
+        "id": "715e586c88f26559",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "ccaadac99d5b4601",
+        "name": "",
+        "credtype": "account",
+        "account": "ccaf1ccde349d2b9",
+        "text": "Boton de emergencia activado",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "str",
+        "rejectssl": true,
+        "x": 980,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ad61cd2685db6712",
+        "type": "mqtt in",
+        "z": "ccaadac99d5b4601",
+        "name": "",
+        "topic": "acelerometro/button",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "bee975905c1c044f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 730,
+        "y": 580,
+        "wires": [
+            [
+                "4ecb92de4a6736e1",
+                "a75869863c2b5f4a",
+                "715e586c88f26559"
+            ]
+        ]
+    },
+    {
+        "id": "a75869863c2b5f4a",
         "type": "ui_text",
         "z": "ccaadac99d5b4601",
         "group": "27ffcb042077f03c",
-        "order": 12,
+        "order": 11,
         "width": 7,
         "height": 1,
         "name": "",
-        "label": "Aceleración Z",
+        "label": "Aceleración y",
         "format": "{{msg.payload}}",
         "layout": "col-center",
         "className": "",
@@ -999,8 +847,25 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1320,
-        "y": 280,
+        "x": 980,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "4ecb92de4a6736e1",
+        "type": "debug",
+        "z": "ccaadac99d5b4601",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 620,
         "wires": []
     },
     {
@@ -1029,22 +894,6 @@
         "wires": [
             [
                 "5205cd8aa73ae6d0"
-            ]
-        ]
-    },
-    {
-        "id": "5205cd8aa73ae6d0",
-        "type": "sqlite",
-        "z": "0a5e0ccab746cc33",
-        "mydb": "c1f141c142412105",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "",
-        "x": 610,
-        "y": 120,
-        "wires": [
-            [
-                "f58ccc676c585455"
             ]
         ]
     },
@@ -1110,6 +959,22 @@
         "wires": [
             [
                 "5205cd8aa73ae6d0"
+            ]
+        ]
+    },
+    {
+        "id": "5205cd8aa73ae6d0",
+        "type": "sqlite",
+        "z": "0a5e0ccab746cc33",
+        "mydb": "c1f141c142412105",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 610,
+        "y": 120,
+        "wires": [
+            [
+                "f58ccc676c585455"
             ]
         ]
     }
