@@ -14,6 +14,10 @@
 #define SDA 4
 #define SCL 15
 #define btn 21
+
+#define red 27
+#define blue 12
+#define green 14
 const int MPU_addr=0x68; // I2C address of the MPU-6050
 
 int16_t ax, ay, az;
@@ -65,6 +69,9 @@ void setup() {
   Serial.print("Connecting to ");
   Serial.println(WLAN_SSID);
   pinMode(btn, INPUT_PULLUP); // config GPIO21 as input pin and enable the internal pull-up resistor
+  pinMode(red, OUTPUT); // config GPIO21 as input pin and enable the internal pull-up resistor
+  pinMode(green, OUTPUT); // config GPIO21 as input pin and enable the internal pull-up resistor
+  pinMode(blue, OUTPUT); // config GPIO21 as input pin and enable the internal pull-up resistor
 
   WiFi.begin(WLAN_SSID, WLAN_PASS);
   int i = 0;
@@ -76,8 +83,10 @@ void setup() {
   }
   if(i == timeout)
     Serial.println("No Conectado");
+  LedConect(100, red);
 
   Serial.println("IP address: "); Serial.println(WiFi.localIP());
+  LedConect(100, green);
 
   MQTT_connect();
   init_MPU_sensor();
@@ -86,8 +95,16 @@ void setup() {
 {
   currentState = digitalRead(btn);
   Serial.println( currentState);
-  if (currentState == HIGH){
+  if (currentState == LOW){
       button.publish(currentState);
+        digitalWrite(green, LOW);
+        digitalWrite(red, LOW);
+        digitalWrite(blue, HIGH);
+  }
+  else{
+        digitalWrite(green, HIGH);
+        digitalWrite(red, LOW);
+        digitalWrite(blue, LOW);
   }
 
   delay(150);/*
@@ -122,8 +139,11 @@ void MQTT_connect() {
        retries--;
        if (retries == 0)
          Serial.println("No Conectado");
+           LedConect(200, red);
+
   }
   Serial.println("MQTT Connected!");
+   LedConect(100, blue);
 }
 
 void init_MPU_sensor(){
@@ -154,4 +174,17 @@ void MPU_sensor(){
   az_d = az * (9.81/16384.0);
   ay_d = ay * (9.81/16384.0);
   ax_d = ax * (9.81/16384.0);
+}
+
+void LedConect(int time, int led){
+  digitalWrite(led, HIGH);
+  delay(time);
+  ledOFF(100);
+}
+
+void ledOFF(int time){
+  digitalWrite(green, LOW);
+  digitalWrite(red, LOW);
+  digitalWrite(blue, LOW);
+  delay(time);
 }
